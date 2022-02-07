@@ -1,1 +1,27 @@
-# MiniProyecto1
+
+# Entrega1A- MiniProyecto1
+
+Este es un proyecto para la clase de API-2022 
+basado en la detección de glóbulos blancos de la 
+versión modificada del dataset 
+[“BCCD Dataset”](https://public.roboflow.com/object-detection/bccd).
+
+
+
+
+## Pareja 6
+
+- [@Maria Alejanda Perez](https://github.com/maperezp) - 201923972 
+- [@Lina Gómez](https://github.com/Lina-go) - 201923531
+
+
+## Documentation
+
+[Documentation](https://linktodocumentation)
+// va a tener el linktodocumentation
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
