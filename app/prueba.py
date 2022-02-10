@@ -32,4 +32,6 @@ plt.show()
 with open(os.path.join("data\\train","_annotations.coco.json")) as json_file:
     data = json.load(json_file)
     
-print(ut.visualize_annotations(fold='train', img_name=train[0], annotations_json_name='_annotations.coco.json', interest_class=-1))
+ima6 = ut.visualize_annotations(fold='train', img_name=train[100], annotations_json_name='_annotations.coco.json', interest_class=-1)
+lol = plt.imshow(ima6)
+plt.show()
