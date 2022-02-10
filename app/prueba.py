@@ -1,11 +1,13 @@
 import os
-import skimage.io
-import random
+import config as cf
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import glob
 import json
+assert cf
 import utils as ut
+
+
 
 # Importan las imagenes de la carpeta
 train = [f for f in glob.glob(os.path.join('data\\train','*.jpg'))]
