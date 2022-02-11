@@ -17,10 +17,6 @@ train = [f for f in glob.glob(os.path.join('data\\train','*.jpg'))]
 test = [f for f in glob.glob(os.path.join('data\\test','*.jpg'))]
 valid = [f for f in glob.glob(os.path.join('data\\valid','*.jpg'))]
 
-# Generar el primer subplot
-#img = mpimg.imread(os.path.join(test[0]))
-
-#imgplot = plt.imshow(img)
 
 for i in range(0,8):
     #numeroAleatorio = random.randint(0,len(test)-1)
@@ -49,7 +45,7 @@ for i in range(0,len(dataJson["annotations"])):
 print("Platelet: ",platelet,"RBC: ",rbc,"WBC: ",wbc, "Total: ", platelet+rbc+wbc)
 
 
-    
+# Anotaciones  
 ima6 = ut.visualize_annotations(fold='train', img_name=train[100], annotations_json_name='_annotations.coco.json', interest_class=-1)
 lol = plt.imshow(ima6)
 plt.show()
@@ -71,16 +67,13 @@ for i in range(0,4):
     plt.imshow(img)
     plt.axis('off')
     plt.subplot(4,4,j+2)
-    plt.imshow(b)
-    #plt.title("Blue")
+    plt.imshow(b, cmap='gray')
     plt.axis('off')
     plt.subplot(4,4,j+3)
-    plt.imshow(g)
-    #plt.title("Green")
+    plt.imshow(g, cmap='gray')
     plt.axis('off')
     plt.subplot(4,4,j+4)
-    plt.imshow(r)
-    #plt.title("Red")
+    plt.imshow(r, cmap='gray')
     plt.axis('off')
     j+=4
     
