@@ -30,7 +30,7 @@ plt.show()
 
 # Leer el archivo JSON
 var= "train"
-with open(os.path.join("data",var,"_annotations.coco.json")) as json_file:
+with open(os.path.join("data_mp1","BCCD",var,"_annotations.coco.json")) as json_file:
     dataJson = json.load(json_file)
     print(dataJson)
 platelet, rbc, wbc = 0, 0, 0
