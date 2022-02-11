@@ -24,12 +24,12 @@ def visualize_annotations(fold, img_name, annotations_json_name='_annotations.co
     COLORS = [[0,0,0], [0, 255, 0], [255, 0, 0], [0, 0, 255]]
     
     # Obtaining the images and annotations from de json file
-    json_data = json.load(open(os.path.join('data', fold, annotations_json_name), 'r'))
+    json_data = json.load(open(os.path.join('data_mp1','BCCD', fold, annotations_json_name), 'r'))
     images = json_data['images']
     annotations = json_data['annotations']
     
     # Importing the image of interest
-    img = cv2.imread(os.path.join(img_name))
+    img = cv2.imread(os.path.join('data_mp1','BCCD', fold, img_name))
     for i in images:
         # Selection of the id of the image of interest
         if i['file_name'] == img_name:
