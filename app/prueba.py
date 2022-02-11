@@ -44,7 +44,7 @@ for i in range(0,len(dataJson["annotations"])):
         rbc += var
     elif var == 3:
         wbc += var
-print("Platelet: ",platelet,"RBC: ",rbc,"WBC: ",wbc)
+print("Platelet: ",platelet,"RBC: ",rbc,"WBC: ",wbc, "Total: ", platelet+rbc+wbc)
 
 
     
