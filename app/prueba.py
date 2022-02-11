@@ -13,10 +13,10 @@ import random
 
 
 # Importan las imagenes de la carpeta
-train = [f for f in glob.glob(os.path.join('data\\train','*.jpg'))]
-test = [f for f in glob.glob(os.path.join('data\\test','*.jpg'))]
-valid = [f for f in glob.glob(os.path.join('data\\valid','*.jpg'))]
-
+train = [f for f in glob.glob(os.path.join('data_mp1\\BCCD\\train','*.jpg'))]
+test = [f for f in glob.glob(os.path.join('data_mp1\\BCCD\\test','*.jpg'))]
+valid = [f for f in glob.glob(os.path.join('data_mp1\\BCCD\\valid','*.jpg'))]
+print(len(train),len(test),len(valid))
 
 for i in range(0,8):
     #numeroAleatorio = random.randint(0,len(test)-1)
@@ -32,6 +32,7 @@ plt.show()
 var= "train"
 with open(os.path.join("data",var,"_annotations.coco.json")) as json_file:
     dataJson = json.load(json_file)
+    print(dataJson)
 platelet, rbc, wbc = 0, 0, 0
 for i in range(0,len(dataJson["annotations"])):
     var = dataJson["annotations"][i]["category_id"]
@@ -80,4 +81,5 @@ for i in range(0,4):
 plt.suptitle("Imagenes de prueba")
 plt.show()
 
+# Transformaciones 
 
