@@ -15,7 +15,7 @@ import numpy as np
 train = [f for f in glob.glob(os.path.join('data_mp1\\BCCD\\train','*.jpg'))]
 test = [f for f in glob.glob(os.path.join('data_mp1\\BCCD\\test','*.jpg'))]
 valid = [f for f in glob.glob(os.path.join('data_mp1\\BCCD\\valid','*.jpg'))]
-print(len(train),len(test),len(valid))
+print("Número de imágenes en train:", len(train),"Número de imágenes en test:",len(test),"Número de imágenes en valid:",len(valid))
 
 plt.figure("Imagenes.png")
 for i in range(0,8):
@@ -29,22 +29,42 @@ plt.suptitle("Imagenes de entrenamiento")
 plt.show()
 
 # Leer el archivo JSON
-var= "train"
-with open(os.path.join("data_mp1","BCCD",var,"_annotations.coco.json")) as json_file:
-    dataJson = json.load(json_file)
+carpetas= ["train", "test", "valid"]
+for carpeta in carpetas:
+    with open(os.path.join("data_mp1","BCCD",carpeta,"_annotations.coco.json")) as json_file:
+        dataJson = json.load(json_file)
 
-platelet, rbc, wbc = 0, 0, 0
-for i in range(0,len(dataJson["annotations"])):
-    var = dataJson["annotations"][i]["category_id"]
-    
-    if var == 1:
-        platelet += var 
-    elif var == 2:
-        rbc += var
-    elif var == 3:
-        wbc += var
-print("Platelet: ",platelet,"RBC: ",rbc,"WBC: ",wbc, "Total: ", platelet+rbc+wbc)
+    platelet, rbc, wbc = 0, 0, 0    
+    lista_platelet, lista_rbc, lista_wbc = [], [], []
 
+    for i in range(0,len(dataJson["annotations"])):
+        var = dataJson["annotations"][i]["category_id"]
+        
+        if var == 1:
+            platelet += 1
+            lista_platelet.append(1)
+        else:
+            lista_platelet.append(0)
+
+        if var == 2:
+            rbc += 1
+            lista_rbc.append(1)
+        else:
+            lista_rbc.append(0)
+
+        if var == 3:
+            wbc += 1
+            lista_wbc.append(1)
+        else:
+            lista_wbc.append(0)
+
+    lista_platelet, lista_rbc, lista_wbc = np.array(lista_platelet), np.array(lista_rbc), np.array(lista_wbc)
+    total = platelet+rbc+wbc
+    print("Estadisticas de las Anotaciones de Imagenes en ", carpeta)
+    print("{:^6s}\t{:^35s}\t{:^9s}\t{:^28s}\t{:^10s}\t".format("Estadistica","Platelet: ","RBC: ", "WBC: ", "Total: "))
+    print("{:}\t{:20}\t{:20}\t{:20}\t{:20}".format("cantidad",platelet,rbc,wbc, total))
+    print("{:}\t{:20.2f}\t{:20.2f}\t{:20.2f}\t{:35}".format("promedio",np.mean(lista_platelet),np.mean(lista_rbc),np.mean(lista_wbc), "    -   ") )
+    print("{:}\t{:12.2f}\t{:20.2f}\t{:20.2f}\t{:35}".format("desviacion estándar", np.std(lista_platelet), np.std(lista_rbc), np.std(lista_wbc), "   -    " ))
 
 # Anotaciones  
 plt.figure("Anotaciones.png")
